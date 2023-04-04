@@ -1,0 +1,44 @@
+	//禁止复制
+	.noCopy {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		-khtml-user-select: none;
+		user-select: none;
+	}
+  //谷歌滚动条样式
+  ::-webkit-scrollbar {
+  	height: 6px;
+  	width: 6px;
+  }
+  //内条
+  ::-webkit-scrollbar-thumb {
+  	background: #d7d7d7;
+  	border-radius: 10px;
+  }
+  //外条
+  ::-webkit-scrollbar-track {
+  	background-color: #f2f2f2;
+  }
+  //火狐滚动条样式
+  * {
+  	scrollbar-color: #d7d7d7 #f2f2f2; //滑块颜色  滚动条背景颜色
+  	scrollbar-width: thin; // 滚动条宽度有三种：thin、auto、none
+  }
+  .xzw_word1{
+  	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+  }
+  .xzw_word2{
+  	overflow:hidden;
+  	text-overflow:ellipsis;
+  	display:-webkit-box;
+  	-webkit-box-orient:vertical;
+  	-webkit-line-clamp:2; 
+  }
+  .xzw_center{
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  }
