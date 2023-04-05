@@ -18,7 +18,7 @@ cnpm install js-useful-tools
 ```
 * demo演示
 ```
-https://static-mp-2503170c-6f74-4217-ac1a-43133fb6d1b4.next.bspapp.com/js_useful_tools/index.html
+https://static-mp-2503170c-6f74-4217-ac1a-43133fb6d1b4.next.bspapp.com/js_useful_tools/demo.html
 ```
 
 ### 现有方法
