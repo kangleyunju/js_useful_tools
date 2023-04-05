@@ -90,6 +90,19 @@ checkIsMobile()
 ```
 arraySort([1,3,2])
 ```
+* debounce 防抖
+```
+debounce(()=>{
+	console.log(1)
+},1000)
+```
+* throttle 节流
+```
+throttle(()=>{
+	console.log(1)
+},1000)
+```
+
 
 ### 使用方法
 * vue项目
