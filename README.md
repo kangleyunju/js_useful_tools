@@ -102,6 +102,10 @@ throttle(()=>{
   console.log('1秒执行一次操作,比如提交事件')
 },1000)
 ```
+* arrayRandom 从数组中随机取一个数
+```
+console.log('从数组中随机取一个数', arrayRandom([1, 2, 3]))
+```
 
 
 ### 使用方法

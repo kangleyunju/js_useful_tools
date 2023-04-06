@@ -6,16 +6,16 @@
     <title>使用示例</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-      body{
+      body {
         padding: 10px;
       }
-      a{
+      a {
         margin-right: 10px;
       }
       main div {
         padding: 10px 0;
       }
-      p{
+      p {
         color: #f00;
       }
       main div button {
@@ -80,13 +80,13 @@
         }, {
           name: 'checkIsMobile',
           desc: '检查设备是否手机'
-        },{
+        }, {
           name: 'arraySort',
           desc: '数组排序'
-        },{
+        }, {
           name: 'debounce',
           desc: '防抖'
-        },{
+        }, {
           name: 'throttle',
           desc: '节流'
         }]
@@ -160,17 +160,20 @@
               console.log('检查设备是否手机:', globale.checkIsMobile())
               break
             case 'arraySort':
-              console.log('数组排序,降序:', globale.arraySort([{val:1},{val:3},{val:2}],2,'val'))
+              console.log('数组排序,降序:', globale.arraySort([{ val: 1 }, { val: 3 }, { val: 2 }], 2, 'val'))
               break
             case 'debounce':
-              globale.debounce(()=>{
-              	console.log('用户结束操作1秒后执行,比如实时搜索')
-              },1000)
+              globale.debounce(() => {
+                console.log('用户结束操作1秒后执行,比如实时搜索')
+              }, 1000)
               break
             case 'throttle':
-              globale.throttle(()=>{
-              	console.log('1秒执行一次操作,比如提交事件')
-              },1000)
+              globale.throttle(() => {
+                console.log('1秒执行一次操作,比如提交事件')
+              }, 1000)
+              break
+            case 'arrayRandom':
+              console.log('从数组中随机取一个数', globale.arrayRandom([1, 2, 3]))
               break
           }
         })

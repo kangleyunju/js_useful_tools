@@ -273,6 +273,10 @@ function throttle(fn, delay = 1000) {
 		}, delay)
 	}
 }
+//从数组中随机取一个数
+function arrayRandom(array) {
+	return array[Math.floor(Math.random()*array.length)]
+}
 export {
 	createToken,
 	checkWeb,
@@ -292,5 +296,6 @@ export {
 	checkIsMobile,
 	arraySort,
 	debounce,
-	throttle
+	throttle,
+  arrayRandom
 }
