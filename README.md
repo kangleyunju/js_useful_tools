@@ -21,11 +21,6 @@ cnpm install js-useful-tools
 https://static-mp-2503170c-6f74-4217-ac1a-43133fb6d1b4.next.bspapp.com/js_useful_tools/demo.html
 ```
 
-### 仓库
-| gitee | github |
-| --- | --- |
-| [js_useful_tools](https://gitee.com/kangleyunju/js_useful_tools) | [js_useful_tools](https://github.com/kangleyunju/js_useful_tools) |
-
 ### 现有方法
 * 生成随机token
 ```
@@ -136,3 +131,11 @@ global.createToken(8)
   global.createToken(8)
 </script>
 ```
+
+### 仓库
+| gitee | github |
+| --- | --- |
+| [js_useful_tools](https://gitee.com/kangleyunju/js_useful_tools) | [js_useful_tools](https://github.com/kangleyunju/js_useful_tools) |
+
+### 邮箱
+有问题可以提Issue，或者发邮件：249042680@qq.com，觉得不错可以点个赞
