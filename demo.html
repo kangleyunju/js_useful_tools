@@ -6,6 +6,12 @@
     <title>使用示例</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
+      body{
+        padding: 10px;
+      }
+      a{
+        margin-right: 10px;
+      }
       main div {
         padding: 10px 0;
       }
@@ -15,6 +21,9 @@
     </style>
   </head>
   <body>
+    <a href="https://www.npmjs.com/package/js-useful-tools" target="_blank">npm官网</a>
+    <a href="https://npmmirror.com/package/js-useful-tools" target="_blank">cnpm官网</a>
+    <a href="https://github.com/kangleyunju/js_useful_tools" target="_blank">github源码</a>
     <script type="module">
       import * as globale from './index.js'
       $(document).ready(function() {
@@ -146,7 +155,7 @@
               console.log('检查设备是否手机:', globale.checkIsMobile())
               break
             case 'arraySort':
-              console.log('数组排序,降序:', globale.arraySort([1,3,2],2))
+              console.log('数组排序,降序:', globale.arraySort([{val:1},{val:3},{val:2}],2,'val'))
               break
             case 'debounce':
               globale.debounce(()=>{

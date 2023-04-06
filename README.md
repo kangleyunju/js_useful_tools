@@ -21,6 +21,11 @@ cnpm install js-useful-tools
 https://static-mp-2503170c-6f74-4217-ac1a-43133fb6d1b4.next.bspapp.com/js_useful_tools/demo.html
 ```
 
+### 仓库
+| gitee | github |
+| --- | --- |
+| [js_useful_tools](https://gitee.com/kangleyunju/js_useful_tools) | [js_useful_tools](https://github.com/kangleyunju/js_useful_tools) |
+
 ### 现有方法
 * 生成随机token
 ```
@@ -86,20 +91,20 @@ copyText('哈哈哈你好')
 ```
 checkIsMobile()
 ```
-* arraySort 数组排序
+* arraySort 数组排序,支持二维数组
 ```
-arraySort([1,3,2])
+console.log('数组排序,降序:', globale.arraySort([{val:1},{val:3},{val:2}],2,'val'))
 ```
 * debounce 防抖
 ```
 debounce(()=>{
-	console.log('用户结束操作1秒后执行,比如实时搜索')
+  console.log('用户结束操作1秒后执行,比如实时搜索')
 },1000)
 ```
 * throttle 节流
 ```
 throttle(()=>{
-	console.log('1秒执行一次操作,比如提交事件')
+  console.log('1秒执行一次操作,比如提交事件')
 },1000)
 ```
 
