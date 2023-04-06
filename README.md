@@ -93,13 +93,13 @@ arraySort([1,3,2])
 * debounce 防抖
 ```
 debounce(()=>{
-	console.log(1)
+	console.log('用户结束操作1秒后执行,比如实时搜索')
 },1000)
 ```
 * throttle 节流
 ```
 throttle(()=>{
-	console.log(1)
+	console.log('1秒执行一次操作,比如提交事件')
 },1000)
 ```
 
