@@ -16,10 +16,10 @@ https://npmmirror.com/package/js-useful-tools
 ```
 cnpm install js-useful-tools
 ```
-* demo演示
-```
+
+### demo演示
 https://static-mp-2503170c-6f74-4217-ac1a-43133fb6d1b4.next.bspapp.com/js_useful_tools/demo.html
-```
+
 
 ### 现有方法
 * 生成随机token
@@ -108,15 +108,15 @@ console.log('从数组中随机取一个数', arrayRandom([1, 2, 3]))
 ```
 * encodeStr 字符串加密
 ```
-console.log('从数组中随机取一个数', encodeStr('js_useful_tools'))
+console.log('字符串加密', encodeStr('js_useful_tools'))
 ```
 * decodeStr 字符串解密
 ```
-console.log('从数组中随机取一个数', decodeStr('yÝÒÔèØËÛáËÓãÞÛß'))
+console.log('字符串解密, decodeStr('yÝÒÔèØËÛáËÓãÞÛß'))
 ```
 * numToTime 时间戳转年月日
 ```
-console.log('从数组中随机取一个数', numToTime(1680860366194))
+console.log('时间戳转年月日', numToTime(1680860366194))
 ```
 
 ### 使用方法
