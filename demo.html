@@ -89,6 +89,15 @@
         }, {
           name: 'throttle',
           desc: '节流'
+        },{
+          name: 'encodeStr',
+          desc: '字符串加密'
+        },{
+          name: 'decodeStr',
+          desc: '字符串解密'
+        },{
+          name: 'numToTime',
+          desc: '时间戳转年月日'
         }]
         //渲染页面
         list.forEach((item, index) => {
@@ -174,6 +183,15 @@
               break
             case 'arrayRandom':
               console.log('从数组中随机取一个数', globale.arrayRandom([1, 2, 3]))
+              break
+            case 'encodeStr':
+              console.log('字符串加密js_useful_tools=>', globale.encodeStr('js_useful_tools'))
+              break
+            case 'decodeStr':
+              console.log('字符串解密yÝÒÔèØËÛáËÓãÞÛß=>', globale.decodeStr('yÝÒÔèØËÛáËÓãÞÛß'))
+              break
+            case 'numToTime':
+              console.log('时间戳转年月日', globale.numToTime(1680860366194))
               break
           }
         })

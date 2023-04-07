@@ -106,7 +106,18 @@ throttle(()=>{
 ```
 console.log('从数组中随机取一个数', arrayRandom([1, 2, 3]))
 ```
-
+* encodeStr 字符串加密
+```
+console.log('从数组中随机取一个数', encodeStr('js_useful_tools'))
+```
+* decodeStr 字符串解密
+```
+console.log('从数组中随机取一个数', decodeStr('yÝÒÔèØËÛáËÓãÞÛß'))
+```
+* numToTime 时间戳转年月日
+```
+console.log('从数组中随机取一个数', numToTime(1680860366194))
+```
 
 ### 使用方法
 * vue项目
