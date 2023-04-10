@@ -118,6 +118,10 @@ console.log('字符串解密, decodeStr('yÝÒÔèØËÛáËÓãÞÛß'))
 ```
 console.log('时间戳转年月日', numToTime(1680860366194))
 ```
+* isLeapYear 是否闰年
+```
+console.log('是否闰年', isLeapYear(2023))
+```
 
 ### 使用方法
 * vue项目

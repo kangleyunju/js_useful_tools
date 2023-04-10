@@ -98,6 +98,9 @@
         },{
           name: 'numToTime',
           desc: '时间戳转年月日'
+        },{
+          name: 'isLeapYear',
+          desc: '是否闰年'
         }]
         //渲染页面
         list.forEach((item, index) => {
@@ -190,8 +193,8 @@
             case 'decodeStr':
               console.log('字符串解密yÝÒÔèØËÛáËÓãÞÛß=>', globale.decodeStr('yÝÒÔèØËÛáËÓãÞÛß'))
               break
-            case 'numToTime':
-              console.log('时间戳转年月日', globale.numToTime(1680860366194))
+            case 'isLeapYear':
+              console.log('2022是否闰年', globale.isLeapYear(2022))
               break
           }
         })

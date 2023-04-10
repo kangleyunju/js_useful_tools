@@ -297,14 +297,18 @@ function decodeStr(code) {
 //时间戳转年月日时分秒
 function numToTime(t) {
   if (!t) t = new Date().getTime()
-  let res = {}
-  let year = new Date(t).getFullYear()
-  let month = (new Date(t).getMonth() + 1 + '').padStart(2, 0)
-  let day = (new Date(t).getDate() + '').padStart(2, 0)
-  let hour = (new Date(t).getHours() + '').padStart(2, 0)
-  let minute = (new Date(t).getMinutes() + '').padStart(2, 0)
-  let second = (new Date(t).getSeconds() + '').padStart(2, 0)
+  let date = new Date(t)
+  let year = date.getFullYear()
+  let month = (date.getMonth() + 1 + '').padStart(2, 0)
+  let day = (date.getDate() + '').padStart(2, 0)
+  let hour = (date.getHours() + '').padStart(2, 0)
+  let minute = (date.getMinutes() + '').padStart(2, 0)
+  let second = (date.getSeconds() + '').padStart(2, 0)
   return year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second
+}
+// 是否是闰年
+function isLeapYear(year=new Date().getFullYear()) {
+  return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0
 }
 export {
   createToken,
@@ -329,5 +333,6 @@ export {
   arrayRandom,
   encodeStr,
   decodeStr,
-  numToTime
+  numToTime,
+  isLeapYear
 }
