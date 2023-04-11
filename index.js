@@ -238,7 +238,7 @@ function arraySort(arr, sort = 1, field) {
   return arr
 }
 // 防抖定时器
-let debounceTimer
+let debounceTimer=null
 /**
   @name 防抖：在规定时间内只执行最后一次操作,比如实时搜索
   @author xie
@@ -257,7 +257,7 @@ function debounce(fn, delay = 1000) {
   }, delay)
 }
 // 节流定时器
-let throttleTimer
+let throttleTimer=null
 /**
   @name 节流：一定时间范围内，用户触发多次只会执行一次,比如提交事件
   @author xie
