@@ -18,7 +18,9 @@ cnpm install js-useful-tools
 ```
 
 ### demo演示
-https://static-mp-2503170c-6f74-4217-ac1a-43133fb6d1b4.next.bspapp.com/js_useful_tools/demo.html
+https://kangleyunju.github.io/js_useful_tools/
+
+https://static-mp-2503170c-6f74-4217-ac1a-43133fb6d1b4.next.bspapp.com/js_useful_tools/index.html
 
 
 ### 现有方法
@@ -88,7 +90,7 @@ checkIsMobile()
 ```
 * arraySort 数组排序,支持二维数组
 ```
-console.log('数组排序,降序:', globale.arraySort([{val:1},{val:3},{val:2}],2,'val'))
+globale.arraySort([{val:1},{val:3},{val:2}],2,'val')
 ```
 * debounce 防抖
 ```
@@ -104,23 +106,27 @@ throttle(()=>{
 ```
 * arrayRandom 从数组中随机取一个数
 ```
-console.log('从数组中随机取一个数', arrayRandom([1, 2, 3]))
+arrayRandom([1, 2, 3])
 ```
 * encodeStr 字符串加密
 ```
-console.log('字符串加密', encodeStr('js_useful_tools'))
+encodeStr('js_useful_tools')
 ```
 * decodeStr 字符串解密
 ```
-console.log('字符串解密, decodeStr('yÝÒÔèØËÛáËÓãÞÛß'))
+decodeStr('yÝÒÔèØËÛáËÓãÞÛß')
 ```
 * numToTime 时间戳转年月日
 ```
-console.log('时间戳转年月日', numToTime(1680860366194))
+numToTime(1680860366194)
 ```
 * isLeapYear 是否闰年
 ```
-console.log('是否闰年', isLeapYear(2023))
+isLeapYear(2023)
+```
+* deepClone 深拷贝
+```
+deepClone([1,2,3])
 ```
 
 ### 使用方法
