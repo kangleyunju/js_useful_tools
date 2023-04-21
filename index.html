@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>使用示例</title>
+		<link rel="stylesheet" type="text/css" href="./style.css" />
+		<style>
+			body {
+				padding: 10px;
+			}
+			a {
+				margin-right: 10px;
+			}
+			main div {
+				padding: 10px 0;
+			}
+			p {
+				color: #f00;
+			}
+			main div button {
+				margin-left: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="https://npmmirror.com/package/js-useful-tools" target="_blank">cnpm官网</a>
+		<a href="https://www.npmjs.com/package/js-useful-tools" target="_blank">npm官网</a>
+		<a href="https://gitee.com/kangleyunju/js_useful_tools" target="_blank">gitee源码</a>
+		<a href="https://github.com/kangleyunju/js_useful_tools" target="_blank">github源码</a>
+		<p>提示：点击按钮触发事件，F12打开控制台可查看结果，详细使用方法可以鼠标右键查看网页源码</p>
+		<script type="module">
+			import * as globale from './index.js'
+			const map = {
+				createToken: {
+					desc: '生成随机位数位token',
+					fn: () => console.log(globale.createToken('8'))
+				},
+				checkWeb: {
+					desc: '验证网址',
+					fn: () => console.log(globale.checkWeb('https://www.baidu.com'))
+				},
+				checkEmail: {
+					desc: '验证邮箱',
+					fn: () => console.log(globale.checkEmail('123456@qq.com'))
+				},
+				checkTelephone: {
+					desc: '验证手机号',
+					fn: () => console.log(globale.checkTelephone('13012345678'))
+				},
+				checkCarNumber: {
+					desc: '验证车牌号',
+					fn: () => console.log(globale.checkCarNumber('沪A12345D'))
+				},
+				dayDiff: {
+					desc: '两个日期间隔天数',
+					fn: () => console.log(globale.dayDiff('2022-09-08', '2023-01-09'))
+				},
+				downloadFile: {
+					desc: '下载文件',
+					fn: () => console.log('下载文件暂不演示,需要传文件链接')
+				},
+				fileToBase64: {
+					desc: '文件转base64',
+					fn: () => console.log('文件转base64暂不演示,需要传文件')
+				},
+				pathToBase64: {
+					desc: '链接转base64',
+					fn: () => console.log('链接转base64暂不演示,需要传链接')
+				},
+				base64ToPath: {
+					desc: 'base64转链接',
+					fn: () => console.log('base64转链接暂不演示,需要传base64')
+				},
+				setStorage: {
+					desc: '添加缓存',
+					fn: () => {
+						globale.setStorage('testKey', 1)
+						console.log(1)
+					}
+				},
+				getStorage: {
+					desc: '获取缓存',
+					fn: () => {
+						console.log(globale.getStorage('testKey'))
+					}
+				},
+				removeStorage: {
+					desc: '删除缓存',
+					fn: () => globale.removeStorage('testKey')
+				},
+				shake: {
+					desc: '震动',
+					fn: () => {
+						globale.shake('1000');
+						console.log('请在手机上尝试')
+					}
+				},
+				copyText: {
+					desc: '复制文本',
+					fn: () => globale.copyText('npm install js-useful-tools')
+				},
+				checkIsMobile: {
+					desc: '检查设备是否手机',
+					fn: () => console.log(globale.checkIsMobile())
+				},
+				arraySort: {
+					desc: '数组排序',
+					fn: () => console.log(globale.arraySort([{ val: 1 }, { val: 3 }, { val: 2 }], 2, 'val'))
+				},
+				debounce: {
+					desc: '防抖',
+					fn: () => globale.debounce(() => { console.log('用户结束操作1秒后执行,比如实时搜索') }, 1000)
+				},
+				throttle: {
+					desc: '节流',
+					fn: () => globale.throttle(() => { console.log('1秒执行一次操作,比如提交事件') }, 1000)
+				},
+				arrayRandom: {
+					desc: '从数组中随机取一个数',
+					fn: () => console.log(globale.arrayRandom([1, 2, 3]))
+				},
+				encodeStr: {
+					desc: '字符串加密',
+					fn: () => console.log(globale.encodeStr('js_useful_tools'))
+				},
+				decodeStr: {
+					desc: '字符串解密',
+					fn: () => console.log(globale.decodeStr('yÝÒÔèØËÛáËÓãÞÛß'))
+				},
+				numToTime: {
+					desc: '时间戳转年月日',
+					fn: () => console.log(globale.numToTime(1681880376569))
+				},
+				isLeapYear: {
+					desc: '是否闰年',
+					fn: () => console.log(globale.isLeapYear(2022))
+				},
+				deepClone: {
+					desc: '深拷贝',
+					fn: () => {
+						let aa = [1, 2, 3];
+						let bb = globale.deepClone(aa);
+						aa[0] = 9;
+						console.log('bb', bb)
+					}
+				}
+			}
+			//渲染页面
+			Object.keys(map).forEach((item, index) => {
+				let main = document.createElement('main')
+				document.querySelector('body').appendChild(main)
+				let div = document.createElement('div')
+				let span = document.createElement('span')
+				span.innerHTML = index + 1 + '.' + item
+				div.appendChild(span)
+				let button = document.createElement('button')
+				button.id = item
+				button.innerHTML = map[item].desc
+				div.appendChild(button)
+				main.appendChild(div)
+			})
+			//点击事件
+			document.addEventListener("click", function(e) {
+				const id = e.target.id
+				if (map[id]) {
+					console.log(e.target.innerText)
+					map[id].fn()
+				}
+			})
+		</script>
+	</body>
+</html>
