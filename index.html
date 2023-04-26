@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" type="image/x-icon" href="./img/logo.png" />
 		<title>使用示例</title>
 		<link rel="stylesheet" type="text/css" href="./style.css" />
 		<style>
@@ -21,6 +22,27 @@
 			main div button {
 				margin-left: 10px;
 			}
+			.xcx {
+				position: fixed;
+				bottom: 100px;
+				right: 100px;
+				font-size: 15px;
+				text-align: center;
+				z-index: -1;
+				min-width: 180px;
+				opacity: 1;
+				transition: all 0.3s;
+			}
+			.xcx img {
+				width: 150px;
+				height: 150px;
+				margin-bottom: 10px;
+			}
+			@media screen and (max-width:500px) {
+				.xcx {
+					opacity: 0;
+				}
+			}
 		</style>
 	</head>
 	<body>
@@ -29,6 +51,10 @@
 		<a href="https://gitee.com/kangleyunju/js_useful_tools" target="_blank">gitee源码</a>
 		<a href="https://github.com/kangleyunju/js_useful_tools" target="_blank">github源码</a>
 		<p>提示：点击按钮触发事件，F12打开控制台可查看结果，详细使用方法可以鼠标右键查看网页源码</p>
+		<div class="xcx" v-if="isPc">
+			<img src="./img/xcx.png" />
+			<div>微信扫一扫，体验小程序</div>
+		</div>
 		<script type="module">
 			import * as globale from './index.js'
 			const map = {
@@ -144,6 +170,14 @@
 						aa[0] = 9;
 						console.log('bb', bb)
 					}
+				},
+				rgbToHex: {
+					desc: 'rgb颜色转16进制',
+					fn: () => console.log(globale.rgbToHex('rgb(255,16,7)'))
+				},
+				hexToRgb: {
+					desc: '16进制颜色转rgb',
+					fn: () => console.log(globale.hexToRgb('#2ff086', 0.9))
 				}
 			}
 			//渲染页面

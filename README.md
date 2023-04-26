@@ -1,5 +1,5 @@
 ### 简介
-js常用函数合集, 更新中...
+js常用函数合集，支持vue，react，html项目，更新中...
 * npm官网
 ```
 https://www.npmjs.com/package/js-useful-tools
@@ -17,7 +17,7 @@ https://npmmirror.com/package/js-useful-tools
 cnpm install js-useful-tools
 ```
 
-### demo演示
+### 预览地址
 https://kangleyunju.github.io/js_useful_tools/
 
 https://static-mp-2503170c-6f74-4217-ac1a-43133fb6d1b4.next.bspapp.com/js_useful_tools/index.html
@@ -127,6 +127,14 @@ isLeapYear(2023)
 * deepClone 深拷贝
 ```
 deepClone([1,2,3])
+```
+* rgbToHex rgb颜色转16进制
+```
+globale.rgbToHex('rgb(255,16,7)')
+```
+* hexToRgb 16进制颜色转rgb
+```
+globale.hexToRgba('#2ff086', 0.9)
 ```
 
 ### 使用方法

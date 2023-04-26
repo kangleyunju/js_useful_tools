@@ -314,7 +314,6 @@ function isLeapYear(year = new Date().getFullYear()) {
 function deepClone(source, map = new Map()) {
 	// 非对象直接返回
 	if (source instanceof Object === false) return source
-
 	let target = Array.isArray(source) ? [] : {}
 	if (map.get(source)) {
 		return map.get(source)
@@ -351,6 +350,34 @@ function deepClone(source, map = new Map()) {
 	}
 	return target
 }
+//rgb转16进制
+function rgbToHex(rgb = '') {
+	let reg = /^(rgb|RGB)/
+	if (!reg.test(rgb)) return
+	var arr = rgb.slice(4, rgb.length - 1).split(",")
+	let color = '#'
+	for (var i = 0; i < arr.length; i++) {
+		var t = Number(arr[i]).toString(16)
+		if (t == "0") {
+			t = t + "0"
+		}
+		color += t
+	}
+	return color
+}
+// 16进制转rgb
+function hexToRgb(hex = '', opcity = 1) {
+	const rgba = []
+	hex = hex.replace('#', '').padEnd(8, 'F');
+	for (let i = 0; i < hex.length; i += 2) {
+		if (i < 6) {
+			rgba.push(parseInt(hex.slice(i, i + 2), 16))
+		} else {
+			rgba.push(opcity)
+		}
+	}
+	return `rgba(${rgba.toString()})`
+}
 export {
 	createToken,
 	checkWeb,
@@ -376,5 +403,7 @@ export {
 	decodeStr,
 	numToTime,
 	isLeapYear,
-	deepClone
+	deepClone,
+	rgbToHex,
+	hexToRgb
 }
