@@ -378,6 +378,10 @@ function hexToRgb(hex = '', opcity = 1) {
 	}
 	return `rgba(${rgba.toString()})`
 }
+//js类型
+function getJsType(val) {
+	return Object.prototype.toString.call(val).match(/\[object(.*)]/)[1].replace(/\s*/g, '')
+}
 export {
 	createToken,
 	checkWeb,
@@ -405,5 +409,6 @@ export {
 	isLeapYear,
 	deepClone,
 	rgbToHex,
-	hexToRgb
+	hexToRgb,
+	getJsType
 }

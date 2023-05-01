@@ -136,6 +136,10 @@ globale.rgbToHex('rgb(255,16,7)')
 ```
 globale.hexToRgba('#2ff086', 0.9)
 ```
+* getJsType js类型
+```
+globale.getJsType(null)
+```
 
 ### 使用方法
 * vue项目
