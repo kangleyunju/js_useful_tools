@@ -280,27 +280,39 @@ function getJsType(val) {
  * @author kangle
  * @value now	当前时间戳
  * @value today	今日0点时间戳
+ * @value tomorrow 明天0点时间戳
  * @value month 本月0点时间戳
  * @value year 本年0点时间戳
+ * @value 数字 任意天数0点时间戳
  **/
 function getStamp(value = 'now') {
-	let today = new Date()
+	let now = new Date()
 	if (value == 'now') {
-		return today.getTime()
+		return now.getTime()
 	}
-	if (value == 'today') {
-		today.setHours(0, 0, 0, 0)
-		return today.getTime()
+	if (value == 'now') {
+		now.setHours(0, 0, 0, 0)
+		return now.getTime()
+	}
+	if (value == 'tomorrow') {
+		now.setHours(0, 0, 0, 0)
+		now.setDate(now.getDate() + 1)
+		return now.getTime()
 	}
 	if (value == 'month') {
-		today.setDate(1)
-		today.setHours(0, 0, 0, 0)
-		return today.getTime()
+		now.setDate(1)
+		now.setHours(0, 0, 0, 0)
+		return now.getTime()
 	}
 	if (value == 'year') {
-		today.setMonth(0, 1)
-		today.setHours(0, 0, 0, 0)
-		return today.getTime()
+		now.setMonth(0, 1)
+		now.setHours(0, 0, 0, 0)
+		return now.getTime()
+	}
+	if (typeof(value) == 'number') {
+		now.setHours(0, 0, 0, 0)
+		now.setDate(now.getDate() + value)
+		return now.getTime()
 	}
 }
 export {

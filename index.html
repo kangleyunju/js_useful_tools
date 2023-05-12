@@ -210,8 +210,10 @@
 					fn: () => {
 						console.log('当前时间戳', global.getStamp())
 						console.log('今日0点时间戳', global.getStamp('today'))
+						console.log('明天0点时间戳', global.getStamp('tomorrow'))
 						console.log('本月0点时间戳', global.getStamp('month'))
 						console.log('本年0点时间戳', global.getStamp('year'))
+						console.log('任意天数0点时间戳', global.getStamp(100))
 					}
 				}
 			}
