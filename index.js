@@ -247,23 +247,19 @@ function deepClone(source, map = new Map()) {
 	}
 	return target
 }
-//rgb转16进制
-function rgbToHex(rgb = '') {
-	let reg = /^(rgb|RGB)/
-	if (!reg.test(rgb)) return
-	var arr = rgb.slice(4, rgb.length - 1).split(",")
-	let color = '#'
-	for (var i = 0; i < arr.length; i++) {
-		var t = Number(arr[i]).toString(16)
-		if (t == "0") {
-			t = t + "0"
-		}
-		color += t
+//rgba转16进制
+function rgbToHex(rgba = 'ragb(0,0,0,0)') {
+	const rgbaArray = rgba.match(/\d+(\.\d+)?/g)
+	const [r, g, b, a = 1] = rgbaArray
+	const hex = '#' + ((1 << 24) + (+r << 16) + (+g << 8) + +b).toString(16).slice(1)
+	if (a !== 1) {
+		const alpha = Math.round(a * 255).toString(16);
+		return `${hex}${alpha.padStart(2, '0')}`
 	}
-	return color
+	return hex
 }
 // 16进制转rgb
-function hexToRgb(hex = '', opcity = 1) {
+function hexToRgb(hex = '#000', opcity = 1) {
 	const rgba = []
 	hex = hex.replace('#', '').padEnd(8, 'F');
 	for (let i = 0; i < hex.length; i += 2) {
@@ -275,9 +271,37 @@ function hexToRgb(hex = '', opcity = 1) {
 	}
 	return `rgba(${rgba.toString()})`
 }
-//js类型
+//获取js类型
 function getJsType(val) {
 	return Object.prototype.toString.call(val).match(/\[object(.*)]/)[1].replace(/\s*/g, '')
+}
+/**
+ * @name 获取时间戳
+ * @author kangle
+ * @value now	当前时间戳
+ * @value today	今日0点时间戳
+ * @value month 本月0点时间戳
+ * @value year 本年0点时间戳
+ **/
+function getStamp(value = 'now') {
+	let today = new Date()
+	if (value == 'now') {
+		return today.getTime()
+	}
+	if (value == 'today') {
+		today.setHours(0, 0, 0, 0)
+		return today.getTime()
+	}
+	if (value == 'month') {
+		today.setDate(1)
+		today.setHours(0, 0, 0, 0)
+		return today.getTime()
+	}
+	if (value == 'year') {
+		today.setMonth(0, 1)
+		today.setHours(0, 0, 0, 0)
+		return today.getTime()
+	}
 }
 export {
 	createToken,
@@ -287,9 +311,9 @@ export {
 	checkCarNumber,
 	dayDiff,
 	downloadFile,
+	fileToBlob,
 	fileToBase64,
 	pathToBase64,
-	fileToBlob,
 	setStorage,
 	getStorage,
 	removeStorage,
@@ -307,5 +331,6 @@ export {
 	deepClone,
 	rgbToHex,
 	hexToRgb,
-	getJsType
+	getJsType,
+	getStamp
 }

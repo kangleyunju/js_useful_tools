@@ -9,7 +9,7 @@
 		<style>
 			body {
 				padding: 10px;
-				min-width: 375px;
+				min-width: 300px;
 			}
 			a {
 				margin-right: 10px;
@@ -192,15 +192,27 @@
 				},
 				rgbToHex: {
 					desc: 'rgb颜色转16进制',
-					fn: () => console.log(global.rgbToHex('rgb(255,16,7)'))
+					fn: () => {
+						console.log('rgb(74,145,230)', global.rgbToHex('rgb(74,145,230)'))
+						console.log('rgba(74,145,230,0.5)', global.rgbToHex('rgba(74,145,230,0.5)'))
+					}
 				},
 				hexToRgb: {
 					desc: '16进制颜色转rgb',
-					fn: () => console.log(global.hexToRgb('#2ff086', 0.9))
+					fn: () => console.log(global.hexToRgb('#4a91e6', 0.5))
 				},
 				getJsType: {
-					desc: '判断js类型',
+					desc: '获取js类型',
 					fn: () => console.log(global.getJsType(null))
+				},
+				getStamp: {
+					desc: '获取各个日期时间戳',
+					fn: () => {
+						console.log('当前时间戳', global.getStamp())
+						console.log('今日0点时间戳', global.getStamp('today'))
+						console.log('本月0点时间戳', global.getStamp('month'))
+						console.log('本年0点时间戳', global.getStamp('year'))
+					}
 				}
 			}
 			//渲染页面
