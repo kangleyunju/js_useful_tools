@@ -9,6 +9,7 @@
 		<style>
 			body {
 				padding: 10px;
+				min-width: 375px;
 			}
 			a {
 				margin-right: 10px;
@@ -56,132 +57,150 @@
 			<div>微信扫一扫，体验小程序</div>
 		</div>
 		<script type="module">
-			import * as globale from './index.js'
+			import * as global from './index.js'
 			const map = {
 				createToken: {
 					desc: '生成随机位数位token',
-					fn: () => console.log(globale.createToken('8'))
+					fn: () => console.log(global.createToken('8'))
 				},
 				checkWeb: {
 					desc: '验证网址',
-					fn: () => console.log(globale.checkWeb('https://www.baidu.com'))
+					fn: () => console.log(global.checkWeb('https://www.baidu.com'))
 				},
 				checkEmail: {
 					desc: '验证邮箱',
-					fn: () => console.log(globale.checkEmail('123456@qq.com'))
+					fn: () => console.log(global.checkEmail('123456@qq.com'))
 				},
 				checkTelephone: {
 					desc: '验证手机号',
-					fn: () => console.log(globale.checkTelephone('13012345678'))
+					fn: () => console.log(global.checkTelephone('13012345678'))
 				},
 				checkCarNumber: {
 					desc: '验证车牌号',
-					fn: () => console.log(globale.checkCarNumber('沪A12345D'))
+					fn: () => console.log(global.checkCarNumber('沪A12345D'))
 				},
 				dayDiff: {
 					desc: '两个日期间隔天数',
-					fn: () => console.log(globale.dayDiff('2022-09-08', '2023-01-09'))
+					fn: () => console.log(global.dayDiff('2022-09-08', '2023-01-09'))
 				},
 				downloadFile: {
 					desc: '下载文件',
-					fn: () => console.log('下载文件暂不演示,需要传文件链接')
+					fn: () => global.downloadFile('https://cache.4ce.cn/star3/origin/12bac0283e84693a2cae63718c0f1f57.png', '图片名称')
+				},
+				fileToBlob: {
+					desc: '文件转blob',
+					fn: () => {
+						const input = document.createElement('input');
+						input.type = 'file';
+						input.addEventListener('change', async () => {
+							const file = input.files[0]
+							console.log(await global.fileToBlob(file))
+						})
+						input.click()
+					}
 				},
 				fileToBase64: {
 					desc: '文件转base64',
-					fn: () => console.log('文件转base64暂不演示,需要传文件')
+					fn: () => {
+						const input = document.createElement('input');
+						input.type = 'file';
+						input.addEventListener('change', async () => {
+							const file = input.files[0]
+							console.log(await global.fileToBase64(file))
+						})
+						input.click()
+					}
 				},
 				pathToBase64: {
 					desc: '链接转base64',
-					fn: () => console.log('链接转base64暂不演示,需要传链接')
-				},
-				base64ToPath: {
-					desc: 'base64转链接',
-					fn: () => console.log('base64转链接暂不演示,需要传base64')
+					fn: async () => {
+						console.log(await global.pathToBase64('https://cache.4ce.cn/star3/origin/12bac0283e84693a2cae63718c0f1f57.png'))
+					}
 				},
 				setStorage: {
 					desc: '添加缓存',
 					fn: () => {
-						globale.setStorage('testKey', 1)
+						global.setStorage('testKey', 1)
 						console.log(1)
 					}
 				},
 				getStorage: {
 					desc: '获取缓存',
 					fn: () => {
-						console.log(globale.getStorage('testKey'))
+						console.log(global.getStorage('testKey'))
 					}
 				},
 				removeStorage: {
 					desc: '删除缓存',
-					fn: () => globale.removeStorage('testKey')
+					fn: () => global.removeStorage('testKey')
 				},
 				shake: {
 					desc: '震动',
 					fn: () => {
-						globale.shake('1000');
+						global.shake('1000');
 						console.log('请在手机上尝试')
 					}
 				},
 				copyText: {
 					desc: '复制文本',
-					fn: () => globale.copyText('npm install js-useful-tools')
+					fn: () => global.copyText('npm install js-useful-tools')
 				},
 				checkIsMobile: {
 					desc: '检查设备是否手机',
-					fn: () => console.log(globale.checkIsMobile())
+					fn: () => console.log(global.checkIsMobile())
 				},
 				arraySort: {
 					desc: '数组排序',
-					fn: () => console.log(globale.arraySort([{ val: 1 }, { val: 3 }, { val: 2 }], 2, 'val'))
+					fn: () => console.log(global.arraySort([{ val: 1 }, { val: 3 }, { val: 2 }], 2, 'val'))
 				},
 				debounce: {
 					desc: '防抖',
-					fn: () => globale.debounce(() => { console.log('用户结束操作1秒后执行,比如实时搜索') }, 1000)
+					fn: () => global.debounce(() => { console.log('用户结束操作1秒后执行,比如实时搜索') }, 1000)
 				},
 				throttle: {
 					desc: '节流',
-					fn: () => globale.throttle(() => { console.log('1秒执行一次操作,比如提交事件') }, 1000)
+					fn: () => global.throttle(() => { console.log('1秒执行一次操作,比如提交事件') }, 1000)
 				},
 				arrayRandom: {
 					desc: '从数组中随机取一个数',
-					fn: () => console.log(globale.arrayRandom([1, 2, 3]))
+					fn: () => console.log(global.arrayRandom([1, 2, 3]))
 				},
 				encodeStr: {
 					desc: '字符串加密',
-					fn: () => console.log(globale.encodeStr('js_useful_tools'))
+					fn: () => console.log(global.encodeStr('js_useful_tools'))
 				},
 				decodeStr: {
 					desc: '字符串解密',
-					fn: () => console.log(globale.decodeStr('yÝÒÔèØËÛáËÓãÞÛß'))
+					fn: () => console.log(global.decodeStr('yÝÒÔèØËÛáËÓãÞÛß'))
 				},
-				numToTime: {
+				stampToTime: {
 					desc: '时间戳转年月日',
-					fn: () => console.log(globale.numToTime(1681880376569))
+					fn: () => console.log(global.stampToTime(1681880376569))
 				},
 				isLeapYear: {
 					desc: '是否闰年',
-					fn: () => console.log(globale.isLeapYear(2022))
+					fn: () => console.log(global.isLeapYear(2022))
 				},
 				deepClone: {
 					desc: '深拷贝',
 					fn: () => {
 						let aa = [1, 2, 3];
-						let bb = globale.deepClone(aa);
+						let bb = global.deepClone(aa);
 						aa[0] = 9;
 						console.log('bb', bb)
 					}
 				},
 				rgbToHex: {
 					desc: 'rgb颜色转16进制',
-					fn: () => console.log(globale.rgbToHex('rgb(255,16,7)'))
+					fn: () => console.log(global.rgbToHex('rgb(255,16,7)'))
 				},
 				hexToRgb: {
 					desc: '16进制颜色转rgb',
-					fn: () => console.log(globale.hexToRgb('#2ff086', 0.9))
+					fn: () => console.log(global.hexToRgb('#2ff086', 0.9))
 				},
 				getJsType: {
-					desc: 'js类型',
-					fn: () => console.log(globale.getJsType(null))
+					desc: '判断js类型',
+					fn: () => console.log(global.getJsType(null))
 				}
 			}
 			//渲染页面

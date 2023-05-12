@@ -52,6 +52,10 @@ dayDiff('2022-09-08','2023-01-09')
 ```
 downloadFile(链接, 名称)
 ```
+* fileToBlob 文件转blob
+```
+fileToBlob(file)
+```
 * fileToBase64 文件转base64
 ```
 fileToBase64(file)
@@ -59,10 +63,6 @@ fileToBase64(file)
 * pathToBase64 链接转base64
 ```
 pathToBase64(path)
-```
-* base64ToPath base64转链接
-```
-base64ToPath(base64)
 ```
 * setStorage 添加缓存
 ```
@@ -116,9 +116,9 @@ encodeStr('js_useful_tools')
 ```
 decodeStr('yÝÒÔèØËÛáËÓãÞÛß')
 ```
-* numToTime 时间戳转年月日
+* stampToTime 时间戳转年月日
 ```
-numToTime(1680860366194)
+stampToTime(1680860366194)
 ```
 * isLeapYear 是否闰年
 ```
@@ -176,3 +176,6 @@ global.createToken(8)
 
 ### 邮箱
 有问题可以提Issue，或者发邮件：249042680@qq.com，觉得不错可以点个赞
+
+### 小程序
+![体验微信微信小程序](./img/xcx.png)
