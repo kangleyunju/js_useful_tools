@@ -144,6 +144,14 @@ globale.getJsType(null)
 ```
 global.getStamp('month')
 ```
+30. exportJson 导出json
+```
+global.exportJson(data)
+```
+31. importJson 导入json
+```
+global.importJson(file)
+```
 
 ### 使用方法
 * vue项目
@@ -180,3 +188,9 @@ global.createToken(8)
 
 ### 邮箱
 有问题可以提Issue，或者发邮件：249042680@qq.com，觉得不错可以点个赞
+
+### 发布
+```
+npm config set registry https://registry.npmjs.org
+npm publish
+```

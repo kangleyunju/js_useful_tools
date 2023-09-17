@@ -59,6 +59,7 @@ function fileToBlob(file) {
 	const start = 0;
 	const end = file.size - 1;
 	const blob = file.slice(start, end + 1, file.type);
+	console.log(blob)
 	return URL.createObjectURL(blob)
 }
 //文件转base64
@@ -134,40 +135,38 @@ function arraySort(arr, sort = 1, field) {
 	}
 	return arr
 }
-// 防抖定时器
-let debounceTimer = null
 /**
   @name 防抖：在规定时间内只执行最后一次操作,比如实时搜索
-  @author xie
   @param fn 回调函数
   @param delay 延时的时间
 **/
-function debounce(fn, delay = 1000) {
-	if (debounceTimer) {
-		clearTimeout(debounceTimer)
-		debounceTimer = null
+function debounce(fn, delay = 300) {
+	let timer = null
+	return function(...args) {
+		if (timer != null) {
+			clearTimeout(timer)
+			timer = null
+		}
+		timer = setTimeout(() => {
+			fn.call(this, ...args)
+		}, delay)
 	}
-	debounceTimer = setTimeout(() => {
-		fn()
-		clearTimeout(debounceTimer)
-		debounceTimer = null
-	}, delay)
 }
-// 节流定时器
-let throttleTimer = null
 /**
   @name 节流：一定时间范围内，用户触发多次只会执行一次,比如提交事件
-  @author xie
   @param fn 回调函数
   @param delay 延时的时间
 **/
 function throttle(fn, delay = 1000) {
-	if (throttleTimer == null) {
-		fn()
-		throttleTimer = setTimeout(() => {
-			clearTimeout(throttleTimer)
-			throttleTimer = null
-		}, delay)
+	let timer = null
+	return function(...args) {
+		if (timer == null) {
+			timer = setTimeout(() => {
+				fn.call(this, ...args)
+				clearTimeout(timer)
+				timer = null
+			}, delay)
+		}
 	}
 }
 //从数组中随机取一个数
@@ -290,7 +289,7 @@ function getStamp(value = 'now') {
 	if (value == 'now') {
 		return now.getTime()
 	}
-	if (value == 'now') {
+	if (value == 'today') {
 		now.setHours(0, 0, 0, 0)
 		return now.getTime()
 	}
@@ -314,6 +313,39 @@ function getStamp(value = 'now') {
 		now.setDate(now.getDate() + value)
 		return now.getTime()
 	}
+}
+/**
+ * @name 导出json
+ * @author kangle
+ * @data 导入的数据,可以是数组、对象、字符串等
+ * @name 导出的文件名
+ **/
+function exportJson(data, name) {
+	if (data) {
+		const url = `data:text/csv;charset=utf-8,\ufeff${JSON.stringify(data)}`
+		const link = document.createElement("a")
+		link.href = url
+		link.download = `${name||'file'}.json`;
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+	}
+}
+//导入json
+async function importJson(file) {
+	if (!file) return
+	return new Promise(function(resolve, reject) {
+		let reader = new FileReader()
+		reader.readAsText(file)
+		reader.onload = function(res) {
+			try {
+				let data = JSON.parse(res.target.result)
+				resolve(data)
+			} catch (error) {
+				resolve(res.target.result)
+			}
+		}
+	})
 }
 export {
 	createToken,
@@ -344,5 +376,7 @@ export {
 	rgbToHex,
 	hexToRgb,
 	getJsType,
-	getStamp
+	getStamp,
+	exportJson,
+	importJson
 }

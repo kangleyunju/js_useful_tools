@@ -155,11 +155,11 @@
 				},
 				debounce: {
 					desc: '防抖',
-					fn: () => global.debounce(() => { console.log('用户结束操作1秒后执行,比如实时搜索') }, 1000)
+					fn: global.debounce(() => { console.log('用户结束操作1秒后执行,比如实时搜索') }, 1000)
 				},
 				throttle: {
 					desc: '节流',
-					fn: () => global.throttle(() => { console.log('1秒执行一次操作,比如提交事件') }, 1000)
+					fn: global.throttle(() => { console.log('1秒执行一次操作,比如提交事件') }, 1000)
 				},
 				arrayRandom: {
 					desc: '从数组中随机取一个数',
@@ -214,6 +214,22 @@
 						console.log('本月0点时间戳', global.getStamp('month'))
 						console.log('本年0点时间戳', global.getStamp('year'))
 						console.log('任意天数0点时间戳', global.getStamp(100))
+					}
+				},
+				exportJson: {
+					desc: '导出json',
+					fn: () => global.exportJson([{ id: 1 }, { id: 2 }], '文件名称')
+				},
+				importJson: {
+					desc: '导入json',
+					fn: () => {
+						const input = document.createElement('input');
+						input.type = 'file';
+						input.addEventListener('change', async () => {
+							const file = input.files[0]
+							console.log(await global.importJson(file))
+						})
+						input.click()
 					}
 				}
 			}
