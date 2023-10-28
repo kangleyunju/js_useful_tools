@@ -10,6 +10,11 @@
 			body {
 				padding: 10px;
 				min-width: 300px;
+				margin: 0;
+				overflow-y: auto;
+			}
+			:not(:root):fullscreen::backdrop {
+				background-color: #fff;
 			}
 			a {
 				margin-right: 10px;
@@ -85,7 +90,7 @@
 				},
 				downloadFile: {
 					desc: '下载文件',
-					fn: () => global.downloadFile('https://cache.4ce.cn/star3/origin/12bac0283e84693a2cae63718c0f1f57.png', '图片名称')
+					fn: () => global.downloadFile('https://pic.imgdb.cn/item/651eb85ac458853aef498f5c.jpg', '图片名称')
 				},
 				fileToBlob: {
 					desc: '文件转blob',
@@ -111,10 +116,10 @@
 						input.click()
 					}
 				},
-				pathToBase64: {
+				urlToBase64: {
 					desc: '链接转base64',
 					fn: async () => {
-						console.log(await global.pathToBase64('https://cache.4ce.cn/star3/origin/12bac0283e84693a2cae63718c0f1f57.png'))
+						console.log(await global.urlToBase64('https://pic.imgdb.cn/item/651eb85ac458853aef498f5c.jpg'))
 					}
 				},
 				setStorage: {
@@ -225,11 +230,28 @@
 					fn: () => {
 						const input = document.createElement('input');
 						input.type = 'file';
+						input.accept = ".json"
 						input.addEventListener('change', async () => {
 							const file = input.files[0]
 							console.log(await global.importJson(file))
 						})
 						input.click()
+					}
+				},
+				fullScreen: {
+					desc: '元素全屏',
+					fn: () => global.fullScreen()
+				},
+				urlToFile: {
+					desc: 'url转file',
+					fn: async() => {
+						console.log(await global.urlToFile("https://pic.imgdb.cn/item/651eb85ac458853aef498f5c.jpg"))
+					}
+				},
+				isUrlAble: {
+					desc: 'url是否有效',
+					fn: async() => {
+						console.log(await global.isUrlAble("https://c2.monidai.com/20221007/Hn3UhoLV/index.m3u8"))
 					}
 				}
 			}

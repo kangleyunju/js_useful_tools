@@ -18,10 +18,9 @@ cnpm install js-useful-tools
 ```
 
 ### 预览地址
-1. https://kangleyunju.github.io/js_useful_tools/
-
-2. https://static-mp-2503170c-6f74-4217-ac1a-43133fb6d1b4.next.bspapp.com/js_useful_tools/index.html
-
+1. https://kangleyunju.gitee.io/js_useful_tools
+2. https://kangleyunju.github.io/js_useful_tools/
+3. https://static-mp-2503170c-6f74-4217-ac1a-43133fb6d1b4.next.bspapp.com/js_useful_tools/index.html
 
 ### 现有方法
 1. createToken 生成随机位数token
@@ -60,9 +59,9 @@ fileToBlob(file)
 ```
 fileToBase64(file)
 ```
-10. pathToBase64 链接转base64
+10. urlToBase64 链接转base64
 ```
-pathToBase64(path)
+urlToBase64(path)
 ```
 11. setStorage 添加缓存
 ```
@@ -151,6 +150,18 @@ global.exportJson(data)
 31. importJson 导入json
 ```
 global.importJson(file)
+```
+32. fullScreen 某个元素全屏
+```
+global.fullScreen(document.body)
+```
+33. urlToFile url转file
+```
+global.urlToFile(url)
+```
+34. isUrlAble url是否有效
+```
+global.isUrlAble(url)
 ```
 
 ### 使用方法

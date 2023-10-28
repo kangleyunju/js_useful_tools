@@ -1,5 +1,5 @@
 //生成随机token,max位数
-function createToken(max = 10) {
+export function createToken(max = 10) {
 	let token = ''
 	for (let i = 1; i <= max; i++) {
 		const n = Math.floor(Math.random() * 16).toString(16)
@@ -8,22 +8,22 @@ function createToken(max = 10) {
 	return token
 }
 //验证网址
-function checkWeb(val) {
+export function checkWeb(val) {
 	const reg = /^http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/
 	return reg.test(val)
 }
 //验证邮箱
-function checkEmail(val) {
+export function checkEmail(val) {
 	const reg = /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/
 	return reg.test(val)
 }
 //验证手机号
-function checkTelephone(val) {
+export function checkTelephone(val) {
 	const reg = /^1[3-9]\d{9}$/
 	return reg.test(val)
 }
 //验证车牌号
-function checkCarNumber(val) {
+export function checkCarNumber(val) {
 	const newReg = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}(([0-9]{5}[DF]$)|([DF][A-HJ-NP-Z0-9][0-9]{4}$))/;
 	const oldReg = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9挂学警港澳]{1}$/;
 	if (val.length == 7) {
@@ -35,13 +35,13 @@ function checkCarNumber(val) {
 	}
 }
 //两个日期间隔天数
-function dayDiff(date1, date2) {
+export function dayDiff(date1, date2) {
 	if (date1 && date2) {
 		return Math.ceil(Math.abs(new Date(date1).getTime() - new Date(date2).getTime()) / 86400000)
 	}
 }
 // 下载文件, path路径,name文件名
-function downloadFile(path, name) {
+export function downloadFile(path, name) {
 	const x = new XMLHttpRequest()
 	x.open('GET', path, true)
 	x.responseType = 'blob'
@@ -55,7 +55,7 @@ function downloadFile(path, name) {
 	x.send()
 }
 //文件转blob
-function fileToBlob(file) {
+export function fileToBlob(file) {
 	const start = 0;
 	const end = file.size - 1;
 	const blob = file.slice(start, end + 1, file.type);
@@ -63,7 +63,7 @@ function fileToBlob(file) {
 	return URL.createObjectURL(blob)
 }
 //文件转base64
-function fileToBase64(file) {
+export function fileToBase64(file) {
 	if (!file) return
 	return new Promise(function(resolve, reject) {
 		let reader = new FileReader()
@@ -81,7 +81,7 @@ function fileToBase64(file) {
 	})
 }
 //链接转base64
-function pathToBase64(path) {
+export function urlToBase64(path) {
 	return new Promise((resolve, reject) => {
 		const img = new Image();
 		img.crossOrigin = 'anonymous';
@@ -98,19 +98,19 @@ function pathToBase64(path) {
 	})
 }
 //添加缓存
-function setStorage(key, data) {
+export function setStorage(key, data) {
 	localStorage.setItem(key, JSON.stringify(data))
 }
 //获取缓存
-function getStorage(key) {
+export function getStorage(key) {
 	return JSON.parse(localStorage.getItem(key))
 }
 //删除缓存
-function removeStorage(key) {
+export function removeStorage(key) {
 	localStorage.removeItem(key)
 }
 //震动
-function shake(time = 300) {
+export function shake(time = 300) {
 	const navigator = window.navigator
 	if (!("vibrate" in navigator)) return
 	navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate
@@ -118,15 +118,15 @@ function shake(time = 300) {
 	navigator.vibrate(time)
 }
 //复制文本
-function copyText(val = '') {
+export function copyText(val = '') {
 	navigator.clipboard.writeText(val)
 }
 //检查设备是否手机
-function checkIsMobile() {
+export function checkIsMobile() {
 	return navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i) ? true : false
 }
 //数组排序,sort=1升序,sort=2降序
-function arraySort(arr, sort = 1, field) {
+export function arraySort(arr, sort = 1, field) {
 	arr.sort(function(a, b) {
 		return field ? a[field] - b[field] : a - b
 	})
@@ -140,7 +140,7 @@ function arraySort(arr, sort = 1, field) {
   @param fn 回调函数
   @param delay 延时的时间
 **/
-function debounce(fn, delay = 300) {
+export function debounce(fn, delay = 300) {
 	let timer = null
 	return function(...args) {
 		if (timer != null) {
@@ -157,7 +157,7 @@ function debounce(fn, delay = 300) {
   @param fn 回调函数
   @param delay 延时的时间
 **/
-function throttle(fn, delay = 1000) {
+export function throttle(fn, delay = 1000) {
 	let timer = null
 	return function(...args) {
 		if (timer == null) {
@@ -170,11 +170,11 @@ function throttle(fn, delay = 1000) {
 	}
 }
 //从数组中随机取一个数
-function arrayRandom(array) {
+export function arrayRandom(array) {
 	return array[Math.floor(Math.random() * array.length)]
 }
 //字符串加密   
-function encodeStr(code) {
+export function encodeStr(code) {
 	if (code) code = code.toString()
 	var password = String.fromCharCode(code.charCodeAt(0) + code.length);
 	for (var i = 1; i < code.length; i++) {
@@ -183,7 +183,7 @@ function encodeStr(code) {
 	return password
 }
 //字符串解密
-function decodeStr(code) {
+export function decodeStr(code) {
 	var password = String.fromCharCode(code.charCodeAt(0) - code.length)
 	for (var i = 1; i < code.length; i++) {
 		password += String.fromCharCode(code.charCodeAt(i) - password.charCodeAt(i - 1));
@@ -191,7 +191,7 @@ function decodeStr(code) {
 	return password
 }
 //时间戳转年月日时分秒
-function stampToTime(t) {
+export function stampToTime(t) {
 	if (!t) t = new Date().getTime()
 	let date = new Date(t)
 	let year = date.getFullYear()
@@ -203,11 +203,11 @@ function stampToTime(t) {
 	return year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second
 }
 // 是否是闰年
-function isLeapYear(year = new Date().getFullYear()) {
+export function isLeapYear(year = new Date().getFullYear()) {
 	return (year % 4 == 0 && year % 100 != 0) || year % 400 == 0
 }
 //深拷贝
-function deepClone(source, map = new Map()) {
+export function deepClone(source, map = new Map()) {
 	// 非对象直接返回
 	if (source instanceof Object === false) return source
 	let target = Array.isArray(source) ? [] : {}
@@ -247,7 +247,7 @@ function deepClone(source, map = new Map()) {
 	return target
 }
 //rgba转16进制
-function rgbToHex(rgba = 'ragb(0,0,0,0)') {
+export function rgbToHex(rgba = 'ragb(0,0,0,0)') {
 	const rgbaArray = rgba.match(/\d+(\.\d+)?/g)
 	const [r, g, b, a = 1] = rgbaArray
 	const hex = '#' + ((1 << 24) + (+r << 16) + (+g << 8) + +b).toString(16).slice(1)
@@ -258,7 +258,7 @@ function rgbToHex(rgba = 'ragb(0,0,0,0)') {
 	return hex
 }
 // 16进制转rgb
-function hexToRgb(hex = '#000', opcity = 1) {
+export function hexToRgb(hex = '#000', opcity = 1) {
 	const rgba = []
 	hex = hex.replace('#', '').padEnd(8, 'F');
 	for (let i = 0; i < hex.length; i += 2) {
@@ -271,7 +271,7 @@ function hexToRgb(hex = '#000', opcity = 1) {
 	return `rgba(${rgba.toString()})`
 }
 //获取js类型
-function getJsType(val) {
+export function getJsType(val) {
 	return Object.prototype.toString.call(val).match(/\[object(.*)]/)[1].replace(/\s*/g, '')
 }
 /**
@@ -284,7 +284,7 @@ function getJsType(val) {
  * @value year 本年0点时间戳
  * @value 数字 任意天数0点时间戳
  **/
-function getStamp(value = 'now') {
+export function getStamp(value = 'now') {
 	let now = new Date()
 	if (value == 'now') {
 		return now.getTime()
@@ -320,7 +320,7 @@ function getStamp(value = 'now') {
  * @data 导入的数据,可以是数组、对象、字符串等
  * @name 导出的文件名
  **/
-function exportJson(data, name) {
+export function exportJson(data, name) {
 	if (data) {
 		const url = `data:text/csv;charset=utf-8,\ufeff${JSON.stringify(data)}`
 		const link = document.createElement("a")
@@ -332,7 +332,7 @@ function exportJson(data, name) {
 	}
 }
 //导入json
-async function importJson(file) {
+export function importJson(file) {
 	if (!file) return
 	return new Promise(function(resolve, reject) {
 		let reader = new FileReader()
@@ -347,36 +347,47 @@ async function importJson(file) {
 		}
 	})
 }
-export {
-	createToken,
-	checkWeb,
-	checkEmail,
-	checkTelephone,
-	checkCarNumber,
-	dayDiff,
-	downloadFile,
-	fileToBlob,
-	fileToBase64,
-	pathToBase64,
-	setStorage,
-	getStorage,
-	removeStorage,
-	shake,
-	copyText,
-	checkIsMobile,
-	arraySort,
-	debounce,
-	throttle,
-	arrayRandom,
-	encodeStr,
-	decodeStr,
-	stampToTime,
-	isLeapYear,
-	deepClone,
-	rgbToHex,
-	hexToRgb,
-	getJsType,
-	getStamp,
-	exportJson,
-	importJson
+//元素全屏
+export function fullScreen(e) {
+	let element = e || document.body
+	if (document.fullscreenElement) {
+		if (document.exitFullscreen) {
+			document.exitFullscreen();
+		} else if (document.mozCancelFullScreen) {
+			document.mozCancelFullScreen();
+		} else if (document.msExitFullscreen) {
+			document.msExiFullscreen();
+		} else if (document.webkitCancelFullScreen) {
+			document.webkitCancelFullScreen();
+		}
+	} else {
+		if (element.requestFullscreen) {
+			element.requestFullscreen();
+		} else if (element.mozRequestFullScreen) {
+			element.mozRequestFullScreen();
+		} else if (element.msRequestFullscreen) {
+			element.msRequestFullscreen();
+		} else if (element.webkitRequestFullscreen) {
+			element.webkitRequestFullScreen();
+		}
+	}
+}
+//url转file
+export function urlToFile(url, name = "文件名") {
+	return new Promise(async (resolve) => {
+		const response = await fetch(url);
+		const blob = await response.blob()
+		let file = new File([blob], name, { type: blob.type });
+		resolve(file)
+	})
+}
+//url是否有效
+export function isUrlAble(url) {
+	return new Promise((resolve) => {
+		fetch(url).then(() => {
+			resolve(true)
+		}).catch(() => {
+			resolve(false)
+		})
+	})
 }
