@@ -163,6 +163,14 @@ global.urlToFile(url)
 ```
 global.isUrlAble(url)
 ```
+35. getVideoPoster 获取视频封面
+```
+global.getVideoPoster(file)
+```
+36. compressImg 图片压缩
+```
+global.compressImg(file)
+```
 
 ### 使用方法
 * vue项目

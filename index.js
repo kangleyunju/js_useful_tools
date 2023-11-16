@@ -41,16 +41,20 @@ export function dayDiff(date1, date2) {
 	}
 }
 // 下载文件, path路径,name文件名
-export function downloadFile(path, name) {
+export async function downloadFile(path, name) {
 	const x = new XMLHttpRequest()
 	x.open('GET', path, true)
 	x.responseType = 'blob'
 	x.onload = function() {
-		const url = window.URL.createObjectURL(x.response)
-		const a = document.createElement('a')
-		a.href = url
-		a.download = name
-		a.click()
+		if (x.status == 200) {
+			const url = window.URL.createObjectURL(x.response)
+			const a = document.createElement('a')
+			a.href = url
+			a.download = name
+			a.click()
+		} else {
+			return false
+		}
 	}
 	x.send()
 }
@@ -59,7 +63,6 @@ export function fileToBlob(file) {
 	const start = 0;
 	const end = file.size - 1;
 	const blob = file.slice(start, end + 1, file.type);
-	console.log(blob)
 	return URL.createObjectURL(blob)
 }
 //文件转base64
@@ -386,8 +389,65 @@ export function isUrlAble(url) {
 	return new Promise((resolve) => {
 		fetch(url).then(() => {
 			resolve(true)
-		}).catch(() => {
+		}).catch((err) => {
 			resolve(false)
 		})
+	})
+}
+//获取视频封面,width视频宽度
+export function getVideoPoster(file, width) {
+	return new Promise((resolve) => {
+		const video = document.createElement("video");
+		video.style.display = "none";
+		document.body.appendChild(video);
+		const videoURL = URL.createObjectURL(file);
+		video.src = videoURL;
+		video.controls = true;
+		video.onloadeddata = function() {
+			video.currentTime = 1;
+		};
+		video.onseeked = function() {
+			const canvas = document.createElement("canvas");
+			canvas.style.display = "none";
+			document.body.appendChild(canvas);
+			const context = canvas.getContext("2d");
+			if (width) {
+				canvas.width = width;
+				canvas.height = width * video.videoHeight / video.videoWidth;
+			} else {
+				canvas.width = video.videoWidth;
+				canvas.height = video.videoHeight;
+			}
+			context.drawImage(video, 0, 0, canvas.width, canvas.height);
+			const dataUrl = canvas.toDataURL("image/jpg");
+			document.body.removeChild(video);
+			document.body.removeChild(canvas);
+			resolve(dataUrl);
+		};
+	});
+}
+//图片压缩
+export function compressImg(file, width = 300) {
+	return new Promise((resolve) => {
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onload = function(event) {
+			const img = new Image();
+			img.src = event.target.result;
+			img.onload = function() {
+				const canvas = document.createElement('canvas');
+				if (img.width < width) {
+					canvas.width = img.width
+					canvas.height = img.height
+				} else {
+					canvas.width = width;
+					canvas.height = width * img.height / img.width;
+				}
+				const ctx = canvas.getContext('2d');
+				ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+				const compressedImage = canvas.toDataURL('image/jpeg', 1);
+				resolve(compressedImage);
+			}
+		};
 	})
 }

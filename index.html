@@ -244,14 +244,42 @@
 				},
 				urlToFile: {
 					desc: 'url转file',
-					fn: async() => {
+					fn: async () => {
 						console.log(await global.urlToFile("https://pic.imgdb.cn/item/651eb85ac458853aef498f5c.jpg"))
 					}
 				},
 				isUrlAble: {
 					desc: 'url是否有效',
-					fn: async() => {
+					fn: async () => {
 						console.log(await global.isUrlAble("https://c2.monidai.com/20221007/Hn3UhoLV/index.m3u8"))
+					}
+				},
+				getVideoPoster: {
+					desc: '获取视频封面',
+					fn: async () => {
+						const input = document.createElement('input');
+						input.type = 'file';
+						input.accept = ".mp4"
+						input.addEventListener('change', async () => {
+							const file = input.files[0]
+							console.log(await global.getVideoPoster(file, 300))
+						})
+						input.click()
+					}
+				},
+				compressImg: {
+					desc: '图片压缩',
+					fn: async () => {
+						const input = document.createElement('input');
+						input.type = 'file';
+						input.accept = ".png,.jpg,.jpeg"
+						input.addEventListener('change', async () => {
+							const file = input.files[0]
+							let ss = await global.compressImg(file, 300)
+							console.log(ss)
+							console.log(await global.urlToFile(ss))
+						})
+						input.click()
 					}
 				}
 			}
