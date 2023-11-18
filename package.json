@@ -1,7 +1,7 @@
 {
 	"name": "js-useful-tools",
 	"author": "kangleyunju",
-	"version": "1.2.7",
+	"version": "1.2.8",
 	"description": "js常用方法",
 	"main": "index.js",
 	"keywords": ["vue", "javascript"],

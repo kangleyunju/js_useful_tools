@@ -171,6 +171,14 @@ global.getVideoPoster(file)
 ```
 global.compressImg(file)
 ```
+37. formatSeconds 秒数转时分秒
+```
+global.formatSeconds(12345)//03:25:45
+```
+38. getFileSize 获取文件大小
+```
+global.getFileSize(12345)//12.1KB
+```
 
 ### 使用方法
 * vue项目

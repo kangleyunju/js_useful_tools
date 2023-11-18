@@ -275,9 +275,25 @@
 						input.accept = ".png,.jpg,.jpeg"
 						input.addEventListener('change', async () => {
 							const file = input.files[0]
-							let ss = await global.compressImg(file, 300)
-							console.log(ss)
-							console.log(await global.urlToFile(ss))
+							console.log(await global.compressImg(file, 300))
+						})
+						input.click()
+					}
+				},
+				formatSeconds: {
+					desc: '秒数转时分秒',
+					fn: () => {
+						console.log(global.formatSeconds(12345))
+					}
+				},
+				getFileSize: {
+					desc: '获取文件大小',
+					fn: () => {
+						const input = document.createElement('input');
+						input.type = 'file';
+						input.addEventListener('change', async () => {
+							const file = input.files[0]
+							console.log(global.getFileSize(file.size))
 						})
 						input.click()
 					}

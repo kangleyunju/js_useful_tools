@@ -451,3 +451,38 @@ export function compressImg(file, width = 300) {
 		};
 	})
 }
+//秒数转时分秒
+export function formatSeconds(num = 0) {
+	let day = Math.floor(num / 3600 / 24)
+	let hours = Math.floor(num / 3600);
+	let minutes = Math.floor((num % 3600) / 60);
+	let seconds = num % 60;
+	hours = hours.toString().padStart(2, '0')
+	minutes = minutes.toString().padStart(2, '0')
+	seconds = seconds.toString().padStart(2, '0')
+	if (day > 0) {
+		return day + ":" + hours + ":" + minutes + ":" + seconds;
+	} else if (hours > 0) {
+		return hours + ":" + minutes + ":" + seconds;
+	} else {
+		return minutes + ":" + seconds;
+	}
+}
+//获取文件大小
+export function getFileSize(fileSize = 0) {
+	const KB = 1024;
+	const MB = 1024 * KB;
+	const GB = 1024 * MB;
+	const TB = 1024 * GB;
+	if (fileSize >= TB) {
+		return (fileSize / TB).toFixed(1) + "TB";
+	} else if (fileSize >= GB) {
+		return (fileSize / GB).toFixed(1) + "GB";
+	} else if (fileSize >= MB) {
+		return (fileSize / MB).toFixed(1) + "MB";
+	} else if (fileSize >= KB) {
+		return (fileSize / KB).toFixed(1) + "KB";
+	} else {
+		return fileSize + "B";
+	}
+}
